@@ -1,0 +1,257 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
+  content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Signup</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body{
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(120deg, #2980b9, #8e44ad);
+  height: 100vh;
+  overflow: hidden;
+
+}
+.alertbomb{
+background-color: #e9f4fb;
+color: black;
+}
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  background: white;
+  border-radius: 20px;
+  padding-bottom: 50px;
+}
+
+
+
+.container form{
+  padding: 0 40px;
+  box-sizing: border-box;
+
+
+}
+
+form .txt_field{
+  position: relative;
+  border-bottom: 2px solid #e9dcdc;
+  margin: 30px 0;
+  
+}
+
+.txt_field input{
+  width: 100%;
+  padding: 0 5px;
+  
+  height: 40px;
+  font-size: 16px;
+  border:none;
+  background: none;
+  outline: none;
+
+}
+
+ label{
+  position: absolute;
+  top: 20%;
+  margin-left: 40px;
+  color: #adadad;
+  transform: translate(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+
+}
+.txt_field span::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #b1bac0;
+  transition: .5s;
+}
+
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label{
+  top: -8px;
+  color: #eff1f1;
+}
+
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label{
+  width: 20%;
+}
+
+.pass{
+  margin-left: 60%;
+  color: #a6a6a6;
+  cursor: pointer;
+  padding-bottom: 1px;
+  font-size: 12px;
+}
+.pass:hover{
+  text-decoration: underline;
+} 
+
+input[type="submit"] {
+  width: 80%;
+  height: 50px;
+  border: 1px solid ;
+  background: red;
+  border-radius: 25px;
+  font-size: 14px;
+  color: #e9f4fb;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  margin-top: 10%;
+  margin-left: 10%;
+  
+
+}
+input[type="submit"]:hover{
+  border-color:red;
+  transition: .5s;
+
+}
+p{
+text-align: center;
+font-size: 14px;
+margin-top: 30px;
+margin-bottom: 30px;
+
+}
+.facebook{
+border-radius: px;
+  width: 30px;
+}
+
+.whatsapp{
+
+  width: 30px;
+}
+.twitter{
+
+  width: 30px;
+}
+.social_icons{
+  display: grid;
+  grid-template-columns: 20px 20px 20px;
+  grid-gap: 40px;
+  margin: 0;
+  padding: 0;
+  margin-left: 100px;
+  border-spacing: 10px;
+}
+
+
+.button_box{
+  
+
+  width: 220px;
+  margin: 50px auto;
+  position: relative;
+  box-shadow: 0 0 20px 9px #ff61241f;
+  border-radius: 30px;
+}
+
+.toggle{
+  
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border:0;
+  outline: none;
+  position: relative;
+}
+
+#btn{
+  top:0;
+  left: 0s;
+  
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(to right, red ,rgb(248, 125, 125));
+  border-radius: 30px;
+  transition: .5s; 
+}
+
+#logincolor {
+  color:red;
+}
+
+#signupcolor {
+  color:white;
+}
+.or{
+  color: #a6a6a6;
+}
+</style>
+  
+</head>
+<body>
+
+<div class="container">
+    
+    
+  <div class="button_box">
+    <div id="btn"></div>
+ <button type="button" id="signupcolor"class="toggle">Signup</button>
+ <button type="button"id="logincolor" class="toggle" onclick="window.location.href='login';">Login</button>
+  </div>
+ <form method="POST" id="register">
+
+  <div class="txt_field">
+    <input type="email" required  id="email" name="email" >
+    <span></span>
+    <label for="email"> Enter email</label>
+  </div>
+   <div class="txt_field">
+     <input type="text" required  id="username" name="username">
+     <span></span>
+     <label for="username"> username</label>
+   </div>
+
+   <div class="txt_field">
+    <input type="password1" required id="password1" name="password1">
+    <span></span>
+    <label for="password1">password</label>
+    </div>
+
+    <div class="pass">Forgot password?</div>
+    <input type="submit" value="Sign-up" >
+ </form>
+ <p class="or">
+   <b>OR</b>
+ </p>
+<span></span>
+ 
+<div class="social_icons">
+  <img src="{{ url_for('static', filename='facebook.png')}}" class="facebook">
+  <img src="{{ url_for('static', filename='whatsapp.png')}}" class="whatsapp">
+  <img src="{{ url_for('static', filename='twitter(1).png')}}" class="twitter">
+</div>
+
+</div>
+
+{% endblock %}
+  
+<script
+type="text/javascript"
+src="{{ url_for('static', filename='script.js') }}" class="alertbomb"
+></script>
+</body>
+</html>
